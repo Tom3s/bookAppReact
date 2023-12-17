@@ -1885,6 +1885,11 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.11.tgz"
   integrity sha512-ga8y9v9uyeiLdpKddhxYQkxNDrfvuPrlFb0N1qnZZByvcElJaXthF1UhvCh9TLWJBEHeNtdnbysW7Y6Uq8CVng==
 
+"@types/react-native-sqlite-storage@^6.0.5":
+  version "6.0.5"
+  resolved "https://registry.npmjs.org/@types/react-native-sqlite-storage/-/react-native-sqlite-storage-6.0.5.tgz"
+  integrity sha512-1gPwgYil6pHV/EDF816M8KmVsQC5nGMTAm8OMC25GbyuBaXFn7sdguMq6A2owtXB8c4qsH2tOEIQNetbOquawA==
+
 "@types/react-test-renderer@^18.0.0":
   version "18.0.7"
   resolved "https://registry.npmjs.org/@types/react-test-renderer/-/react-test-renderer-18.0.7.tgz"
@@ -5493,7 +5498,12 @@ react-is@^17.0.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native@*, react-native@>=0.57, react-native@0.72.7:
+react-native-sqlite-storage@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/react-native-sqlite-storage/-/react-native-sqlite-storage-6.0.1.tgz"
+  integrity sha512-1tDFjrint6X6qSYKf3gDyz+XB+X79jfiL6xTugKHPRtF0WvqMtVgdLuNqZunIXjNEvNtNVEbXaeZ6MsguFu00A==
+
+react-native@*, react-native@>=0.14.0, react-native@>=0.57, react-native@0.72.7:
   version "0.72.7"
   resolved "https://registry.npmjs.org/react-native/-/react-native-0.72.7.tgz"
   integrity sha512-dqVFojOO9rOvyFbbM3/v9/GJR355OSuBhEY4NQlMIRc2w0Xch5MT/2uPoq3+OvJ+5h7a8LFAco3fucSffG0FbA==
