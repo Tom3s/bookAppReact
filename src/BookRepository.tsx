@@ -83,6 +83,20 @@ export class BookRepository {
 		});
 	  }
 
+	addWithId(book: Book): Promise<number> {
+		return new Promise((resolve, reject) => {
+		  this.db.transaction((tx) => {
+			tx.executeSql(
+			  'INSERT INTO Books (id, title, author, description, genre, nrPages, status) VALUES (?, ?, ?, ?, ?, ?, ?)',
+			  [book.id, book.title, book.author, book.description, book.genre, book.nrPages, book.status],
+			  (tx, results) => {
+				resolve(results.insertId);
+			  }
+			);
+		  });
+		});
+	  }
+
 	// update(book: Book): void {
 	// 	const index = this.books.findIndex((b) => b.id === book.id);
 	// 	this.books[index] = book;
@@ -119,4 +133,14 @@ export class BookRepository {
 		  });
 		});
 	  }
+
+	async reset(books: Book[]): Promise<void> {
+		const oldBooks = await this.getAllBooks();
+		for (const book of oldBooks) {
+			await this.delete(book.id);
+		}
+		for (const book of books) {
+			await this.addWithId(book);
+		}
+	}
 }

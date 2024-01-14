@@ -5,6 +5,7 @@ import { ListView } from "./src/ListView";
 import { CreateView } from "./src/CreateView";
 import { UpdateView } from "./src/UpdateView";
 import { BookRepository } from "./src/BookRepository";
+import { OnlineDB } from "./src/OnlineDB";
 
 interface AppProps { }
 const initialBooks: Book[] = [
@@ -145,7 +146,13 @@ const initialBooks: Book[] = [
 	},
 ];
 
+const onlineDB = new OnlineDB();
 const bookRepo = new BookRepository();
+// bookRepo.reset(await onlineDB.getAllBooks());
+(async () => {
+  const books = await onlineDB.getAllBooks();
+  bookRepo.reset(books);
+})();
 
 const App: React.FC<AppProps> = () => {
 
@@ -166,6 +173,7 @@ const App: React.FC<AppProps> = () => {
 
 	const handleCreate = async (newBook: Book) => {
 		await bookRepo.add(newBook);
+		onlineDB.add(newBook);
 		const allBooks = await bookRepo.getAllBooks();
 		setBooks(allBooks);
 		// setCurrentBook(null);
@@ -175,6 +183,7 @@ const App: React.FC<AppProps> = () => {
 
 	const handleUpdate = async (updatedBook: Book) => {
 		await bookRepo.update(updatedBook);
+		onlineDB.update(updatedBook);
 		const allBooks = await bookRepo.getAllBooks();
 		setBooks(allBooks);
 		// setCurrentBook(null);
@@ -195,6 +204,7 @@ const App: React.FC<AppProps> = () => {
 					text: 'Delete',
 					onPress: async () => {
 						await bookRepo.delete(id);
+						onlineDB.delete(id);
 						const allBooks = await bookRepo.getAllBooks();
 						setBooks(allBooks);
 						// setCurrentBook(null);
